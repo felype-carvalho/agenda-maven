@@ -41,17 +41,23 @@
 					<tr>
 						<th>Nome</th>
 						<th>Data de Nascimento</th>
+						<th>Telefone</th>
+						<th>CEP</th>
+						<th>Lougradouro</th>
 						<th></th>
 					</tr>
 					
 					<c:forEach var="pessoa" items="${contatos}">
 						<tr>
 							<td>${pessoa.nome}</td>
-							<td><fmt:formatDate value="${pessoa.dataNascimento.time}" pattern="dd-MM-yyyy"/></td>
+							<td><fmt:formatDate value="${pessoa.dataNascimento.time}" pattern="dd-MM-yyyy"/></td> 
+							<td>${pessoa.contato.telefone}</td>
+							<td>${pessoa.endereco.cep}</td>
+							<td>${pessoa.endereco.logradouro}</td>
 							<td>
 								<a href="#" onclick="saveContactId(${pessoa.id})" data-toggle="modal" data-target="#modalExemplo">Remover</a>
 								<span> | </span>
-								<a href="adiciona-contato.jsp?id=${pessoa.id}&nome=${pessoa.nome}&id_endereco=${pessoa.endereco.id}&cep=${pessoa.endereco.cep}&logradouro=${pessoa.endereco.logradouro}&dataNascimento=<fmt:formatDate value="${pessoa.dataNascimento.time}" pattern="yyy-MM-dd"/>">Editar</a>
+								<a href="adiciona-contato.jsp?id=${pessoa.id}&nome=${pessoa.nome}&telefone=${pessoa.contato.telefone}&id_endereco=${pessoa.endereco.id}&cep=${pessoa.endereco.cep}&logradouro=${pessoa.endereco.logradouro}&dataNascimento=<fmt:formatDate value="${pessoa.dataNascimento.time}" pattern="yyy-MM-dd"/>">Editar</a>
 							</td>
 						</tr>
 					</c:forEach>
